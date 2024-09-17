@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react"; // Puedes usar cualquier ícono de éxito
 import { useTransaction } from "../context/TransactionContext";
+import Image from "next/image";
 
 function Success() {
   const { transactionData } = useTransaction();
@@ -54,9 +55,13 @@ function Success() {
                 </p>
               </div>
               <div className="grid justify-items-center">
-                <img
-                  src={`https://quickchart.io/qr?text=${transactionData}&ecLevel=Q&size=180&format=png&margin=1 `}
+                <Image
+                  src={`https://quickchart.io/qr?text=${encodeURIComponent(
+                    transactionData
+                  )}&ecLevel=Q&size=200&format=png&margin=1`}
                   alt="Código QR de Confirmación"
+                  width={200}
+                  height={200}
                 />
               </div>
               {/* Botones de acción */}
